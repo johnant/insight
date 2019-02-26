@@ -27,11 +27,12 @@ There is a number of .properties files containing parameters related to the Elas
 
 ## Run the application
 Required Software: 
-* Java Development Kit 8
+* Java SE Development Kit 8
 * Eclipse
 * Apache Maven
 * Tomcat 7.0
 * Elasticsearch 1.5.0
+
 Steps:
 * Create JAVA_HOME environment variable to point at the jdk1.8.0 installation directory
 * Clone the repo insight-master and import the project in Eclipse
@@ -39,4 +40,7 @@ Steps:
 * Create a runtime instance of Tomcat 7.0 in Eclipse
 * Start Elasticsearch 1.5.0
 * The offline module can be run as an independent java app
-* The online module must be run on Tomcat 7.0
+* The online module must be run on Tomcat 7.0 (right click on project then Run As -> Run on Server
+
+The application UI is available on:
+http://localhost:8080/insight
