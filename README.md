@@ -26,8 +26,17 @@ The application consists of a front-end mechanism written in HTML and Javascript
 There is a number of .properties files containing parameters related to the Elasticsearch server configuration and topic analysis configuration. There is also a queries.txt file which is used by the offline module for the initial population of the Elasticsearch server with web documents, from which answers are extracted by components of the online module.
 
 ## Run the application
-* Install Eclipse
-* Install and run Elasticsearch 1.5.0
-* Import the project in Eclipse
-* Install and run the project under Tomcat 7.0
-* Open src/main/webapp/index.html
+Required Software: 
+* Java Development Kit 8
+* Eclipse
+* Apache Maven
+* Tomcat 7.0
+* Elasticsearch 1.5.0
+Steps:
+* Create JAVA_HOME environment variable to point at the jdk1.8.0 installation directory
+* Clone the repo insight-master and import the project in Eclipse
+* Upgrade the project using Maven inside Eclipse
+* Create a runtime instance of Tomcat 7.0 in Eclipse
+* Start Elasticsearch 1.5.0
+* The offline module can be run as an independent java app
+* The online module must be run on Tomcat 7.0
