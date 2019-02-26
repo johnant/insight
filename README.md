@@ -40,7 +40,7 @@ Steps:
 * Create a runtime instance of Tomcat 7.0 in Eclipse
 * Start Elasticsearch 1.5.0
 * The offline module can be run as an independent java app
-* The online module must be run on Tomcat 7.0 (right click on project then Run As -> Run on Server
+* The online module must be run on Tomcat 7.0 (right click on project then Run As -> Run on Server)
 
 Notes:
 * There are references to local property files inside the code in the below classes: offline.WebParser, offline.IndexManager, online.ContentAnalyzer, online.DocumentAnalysisHandler, online.ElasticManager, online.ParagraphAnalysisHandler, online.ScoringManager and online.TopicAnalyzer. These references should be modified in order to point to the correct directories of the local machine where the code is executed.
