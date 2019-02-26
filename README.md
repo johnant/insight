@@ -34,17 +34,17 @@ Required Software:
 * Elasticsearch 1.5.0
 
 Steps:
-* Clone the repo insight-master and import the project in Eclipse
+* Clone the repo insight-master and import the project in Eclipse.
 * Create JAVA_HOME environment variable to point at the jdk1.8.0 installation directory and make sure that jdk1.8.0 is reflected on the Eclipse/Maven configuration. Consult the following page:
 https://stackoverflow.com/questions/19655184/no-compiler-is-provided-in-this-environment-perhaps-you-are-running-on-a-jre-ra
-* Update and build the project using Maven inside Eclipse (right click on project, first Maven -> Update Project..., then Run As -> Maven install)
-* Create a runtime instance of Tomcat 7.0 in Eclipse
-* Start Elasticsearch 1.5.0
+* Update and build the project using Maven inside Eclipse (right click on project, first Maven -> Update Project..., then Run As -> Maven install).
+* Create a runtime instance of Tomcat 7.0 in Eclipse.
+* Start Elasticsearch 1.5.0.
 * The offline module can be run as an independent java app by running the offline.Controller class
 * The online module must be run on Tomcat 7.0 (right click on project then Run As -> Run on Server). The front-end page should automatically appear in the Eclipse browser environment.
 
 Notes:
-* There are references to local property files inside the code in the below classes: offline.WebParser, offline.IndexManager, online.ContentAnalyzer, online.DocumentAnalysisHandler, online.ElasticManager, online.ParagraphAnalysisHandler, online.ScoringManager and online.TopicAnalyzer. These references should be modified in order to point to the correct directories of the local machine where the code is executed.
-* The offline module should be run first to create the Elasticsearch index mappings and to populate the index with content (documents) based on the queries present in queries.txt file.
-* Keep in mind that the offline module execution requires an active subscription to Microsoft Azure services since it uses the Bing News Search Engine to collect a list of URLs according to the contents of the queries.txt file. There is currently an active subscription key  inside WebParser class which should work out-of-the-box.
+* There are references to local property files inside the code in the below classes: offline.WebParser, offline.IndexManager, online.ContentAnalyzer, online.DocumentAnalysisHandler, online.ElasticManager, online.ParagraphAnalysisHandler, online.ScoringManager and online.TopicAnalyzer. These references should be modified, prior to running the application, to the correct directories of the local machine where the code is executed.
+* The file stopwords.txt must be moved to elasticsearch-1.5.0/config directory before the offline module is initiated in order to successfully create the respective language filter. Otherwise, an error will be thrown and the execution of the offline module will fail.
+* The offline module should be run first to create the Elasticsearch index mappings and to populate the index with content (documents) based on the queries present in queries.txt file. Keep in mind that the offline module execution requires an active subscription to Microsoft Azure services since it uses the Bing News Search Engine to collect a list of URLs according to the contents of the queries.txt file. There is currently an active subscription key  inside WebParser class which should work out-of-the-box.
 * After the offline module's execution is completed, the online module should be initiated as explained above. The application UI should be available on: http://localhost:8080/insight
