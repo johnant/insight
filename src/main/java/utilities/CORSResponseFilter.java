@@ -8,7 +8,7 @@ import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.core.MultivaluedMap;
 
 /**
- * @description Class responsible for setting the appopriate CORS rseponse filter for AJAX communication
+ * @description Class responsible for setting the appropriate CORS response filter for AJAX communication
  * 
  * @author Ioannis Antoniadis
  * @institution	Aristotle University of Thessaloniki

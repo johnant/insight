@@ -50,7 +50,7 @@ public class Evaluator {
 	
 	public Evaluator(){
 		ElasticManager elasticManager = new ElasticManager();
-		Properties prop = elasticManager.readProperties("C:\\Users\\John\\Documents\\Eclipse\\insight\\evaluation.properties");
+		Properties prop = elasticManager.readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\evaluation.properties");
 		this.d = Integer.parseInt(prop.getProperty("d"));
 		this.kRank = Integer.parseInt(prop.getProperty("kRank"));
 		this.indexName = prop.getProperty("index");

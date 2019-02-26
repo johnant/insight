@@ -3,32 +3,5 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
       version="3.0"> 
-         
-        <!-- Servlet to handle dynamic requests -->
-	<servlet>
-		<servlet-name>Jersey Servlet</servlet-name>
-		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-
-		<!-- Where are the resource handlers? -->
-		<init-param>
-			<param-name>jersey.config.server.provider.packages</param-name>
-			<param-value>online;org.codehaus.jackson.jaxrs</param-value>
-		</init-param>
-
-		<!-- Where is the 'application'? -->
-		<init-param>
-			<param-name>javax.ws.rs.Application</param-name>
-			<param-value>online.JAXRSPublisher</param-value>
-		</init-param>
-    
-		<!-- Make this servlet the first one to load when the web server starts. -->
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
-	<!-- Map the above servlet to anything after /dropbox/... -->
-	<servlet-mapping>
-		<servlet-name>Jersey Servlet</servlet-name>
-		<url-pattern>/*</url-pattern>
-	</servlet-mapping>
-     
+ 
 </web-app>

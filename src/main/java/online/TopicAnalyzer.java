@@ -37,7 +37,7 @@ public class TopicAnalyzer {
 	public List<Topic> createDocumentTopics(){
 		
 		/*Perform document-level lda*/
-		lda("C:\\Users\\John\\Documents\\Eclipse\\insight\\documentLDA.properties");	
+		lda("C:\\Users\\giannis\\eclipse-workspace\\insight\\documentLDA.properties");	
 		
 		ElasticManager indexManager = new ElasticManager();
 		int N = indexManager.getDocumentsCount();
@@ -48,7 +48,7 @@ public class TopicAnalyzer {
 	public List<Topic> createParagraphTopics(){
 		
 		/*Perform paragraph-level lda*/
-		lda("C:\\Users\\John\\Documents\\Eclipse\\insight\\paragraphLDA.properties");	
+		lda("C:\\Users\\giannis\\eclipse-workspace\\insight\\paragraphLDA.properties");	
 
 		ElasticManager indexManager = new ElasticManager();
 		int P = indexManager.getParagraphsCount();

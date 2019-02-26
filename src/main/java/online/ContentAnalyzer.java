@@ -25,7 +25,7 @@ public class ContentAnalyzer {
 		
 		List<String> analyzedDocumentList = new ArrayList<String>();
 		ElasticManager indexManager = new ElasticManager();
-		Properties prop = indexManager.readProperties("C:\\Users\\John\\Documents\\Eclipse\\insight\\online.properties");
+		Properties prop = indexManager.readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\online.properties");
 		int N = Integer.parseInt(prop.getProperty("N"));
 		int idCounter = 0;
 		List<Document> documentList = indexManager.searchDataset(query, N);
@@ -36,7 +36,7 @@ public class ContentAnalyzer {
 			analyzedDocumentList.add(doc.getAnalyzedText());
 		}
 		
-		saveAnalyzedList(analyzedDocumentList, "C:\\Users\\John\\Documents\\Eclipse\\insight\\analyzedDocuments.txt");
+		saveAnalyzedList(analyzedDocumentList, "C:\\Users\\giannis\\eclipse-workspace\\insight\\analyzedDocuments.txt");
 		indexManager.indexDocumentList(documentList);
 	}
 	
@@ -58,7 +58,7 @@ public class ContentAnalyzer {
 		}
 		
 		indexManager.indexParagraphList(paragraphList);
-		saveAnalyzedList(analyzedParagraphList, "C:\\Users\\John\\Documents\\Eclipse\\insight\\analyzedParagraphs.txt");	
+		saveAnalyzedList(analyzedParagraphList, "C:\\Users\\giannis\\eclipse-workspace\\insight\\analyzedParagraphs.txt");	
 	}
 
 	private void saveAnalyzedList(List<String> analyzedList, String fileName){

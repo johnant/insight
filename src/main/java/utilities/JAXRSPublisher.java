@@ -18,7 +18,7 @@ import online.Controller;
  * 
  */
 
-@ApplicationPath("api")
+@ApplicationPath("/api")
 public class JAXRSPublisher extends Application{
 
 	public JAXRSPublisher(){}

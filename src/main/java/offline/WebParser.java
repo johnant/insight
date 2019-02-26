@@ -9,7 +9,6 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.Response;
 
-import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -69,7 +68,7 @@ public class WebParser {
 		System.out.println("Searching the web for documents");
 		IndexManager indexManager = new IndexManager();
 		
-		Properties prop = indexManager.readProperties("C:\\Users\\John\\Documents\\Eclipse\\insight\\online.properties");
+		Properties prop = indexManager.readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\online.properties");
 		int N = Integer.parseInt(prop.getProperty("N"));
 		
 		/* Documents by api search*/
@@ -85,7 +84,7 @@ public class WebParser {
 		/* Parse html pages indicated by the urls to create news Document objects */
 		for (JsonElement jelement: jarray){
 			jobject = (JsonObject) jelement;
-			url = jobject.get("Url").toString().replace("\"", "");
+			url = jobject.get("url").toString().replace("\"", "");
 			if(!indexManager.checkDocumentExistance(url)){
 				if(checkConnection(url)){
 					doc = new Document();
@@ -94,7 +93,7 @@ public class WebParser {
 						System.out.println("Creating document, id: "+docCounter+", paragraphs: "+doc.getParagraphList().size());
 						doc.setId(docCounter++);
 						doc.setUrl(url);
-						doc.setTitle(jobject.get("Title").toString());
+						doc.setTitle(jobject.get("name").toString());
 						textBuilder = new StringBuilder();
 						analyzedTextBuilder = new StringBuilder();
 						for(Paragraph par: doc.getParagraphList()){
@@ -121,17 +120,17 @@ public class WebParser {
 	
 	public JsonArray getBingSearchResults(String query, int n){
 		
-		String accountKey = "yAPsRY5LTphSQ0Qm3oTJJQj948xZQOidvSANQtDxmuA";
+		String accountKey = "84e04dab4383422ab88ca065a9bef126";
+		String host = "https://api.cognitive.microsoft.com";
+		String path = "/bing/v7.0/news/search";
 		
 		query = query.replaceAll(" ", "%20");
 		
 		Client client = ClientBuilder.newClient();
 
-		HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic(accountKey, accountKey);
-
-		Response r = client.target("https://api.datamarket.azure.com/Bing/Search/Web?Query=%27" + query + "%27&$top="+n)
-				.register(feature)
+		Response r = client.target(host + path + "?q=" + query)
 				.request()
+				.header("Ocp-Apim-Subscription-Key", accountKey)
 				.accept("application/json")
 				.get();
 		
@@ -141,11 +140,11 @@ public class WebParser {
 		
 		String br = r.readEntity(String.class);
 		
+		System.out.println(br);
 		/* Parse the result set to obtain the urls of the news articles */
 		JsonElement jelement = new JsonParser().parse(br);
 		JsonObject jobject = jelement.getAsJsonObject();
-		jobject = jobject.getAsJsonObject("d");
-		JsonArray jarray = jobject.getAsJsonArray("results");
+		JsonArray jarray = jobject.getAsJsonArray("value");
 		
 		return jarray;
 	}

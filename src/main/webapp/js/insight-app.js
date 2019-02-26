@@ -75,7 +75,7 @@ var app = angular.module('insight-app', ['angular-jqcloud']);
 		$http functions*/
 		//submit query
 		self.submitQuery = function(){
-			$http.get('http://localhost/insight/api/documentTopics', {params: {q:self.query}}).then(function(response){
+			$http.get('http://localhost:8080/insight/api/documentTopics', {params: {q:self.query}}).then(function(response){
 				if(response.data == null){
 					self.docTopics = self.notFound;
 				}
@@ -89,26 +89,10 @@ var app = angular.module('insight-app', ['angular-jqcloud']);
 				console.error('Error while fetching document topic clouds');
 				});
 			};
-
-		/*self.submitQuery = function(){
-			$http.get('http://localhost/insight/api/paragraphs/query', {params: {q:self.query}}).then(function(response){
-				if(response.data == null){
-					self.paragraphs = [];
-				}
-				else{
-					self.paragraphs = response.data;
-				}
-				self.showQuery = false;
-				self.showParagraphs = true;
-			}, function(errResponse){
-				alert('Error while fetching paragraphs');
-				console.error('Error while fetching paragraphs');
-				});
-			};*/
 			
 		//submit document topics	
 		self.submitDocTopics = function(){
-			$http.get('http://localhost/insight/api/paragraphTopics', {params: {topicIds:self.docTopicIds}}).then(function(response){
+			$http.get('http://localhost:8080/insight/api/paragraphTopics', {params: {topicIds:self.docTopicIds}}).then(function(response){
 				if(response.data == null){
 					self.parTopics = self.notFound;
 				}
@@ -123,25 +107,9 @@ var app = angular.module('insight-app', ['angular-jqcloud']);
 				});
 		};
 		
-		/*self.submitDocTopics = function(){
-			$http.get('http://localhost/insight/api/paragraphs/topics', {params: {topicIds:self.docTopicIds}}).then(function(response){
-				if(response.data == null){
-					self.paragraphs = [];
-				}
-				else{
-					self.paragraphs = response.data;
-				}
-				self.showDocTopics = false;
-				self.showParagraphs = true;
-			}, function(errResponse){
-				alert('Error while fetching paragraphs');
-				console.error('Error while fetching paragraphs');
-				});
-		};*/
-		
 		//submit paragraph topics
 		self.submitParTopics = function(){
-			$http.get('http://localhost/insight/api/paragraphs', {params: {topicIds:self.parTopicIds}}).then(function(response){
+			$http.get('http://localhost:8080/insight/api/paragraphs', {params: {topicIds:self.parTopicIds}}).then(function(response){
 				if(response.data == null){
 					self.paragraphs = self.notFound;
 				}

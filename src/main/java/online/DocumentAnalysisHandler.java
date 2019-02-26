@@ -48,7 +48,7 @@ public class DocumentAnalysisHandler {
 		List<Topic> topicList = new ArrayList<Topic>();
 		List<Integer> topicIdList = new ArrayList<Integer>();
 		
-		Properties prop = elasticManager.readProperties("C:\\Users\\John\\Documents\\Eclipse\\insight\\online.properties");
+		Properties prop = elasticManager.readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\online.properties");
 		int k = Integer.parseInt(prop.getProperty("kd"));
 		ScoringManager scoringManager = new ScoringManager();
 		SearchResponse sr = scoringManager.scoreDocumentTopics(query, k);	
@@ -73,7 +73,7 @@ public class DocumentAnalysisHandler {
 		System.out.println("Ranking documents by topics: "+topicIds.toString());
 		
 		ElasticManager indexManager = new ElasticManager();
-		Properties prop = indexManager.readProperties("C:\\Users\\John\\Documents\\Eclipse\\insight\\online.properties");
+		Properties prop = indexManager.readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\online.properties");
 		int d = Integer.parseInt(prop.getProperty("d"));
 		
 		ScoringManager scoringManager = new ScoringManager();

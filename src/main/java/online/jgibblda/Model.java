@@ -31,11 +31,9 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -193,9 +191,11 @@ public class Model {
 		return true;
 	}
 	
+	@SuppressWarnings("unchecked")
 	protected boolean readTAssignFile(String tassignFile){
 		try {
 			int i,j;
+			@SuppressWarnings("resource")
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
 					new FileInputStream(tassignFile), "UTF-8"));
 			
@@ -479,6 +479,7 @@ public class Model {
 	/**
 	 * Init parameters for estimation
 	 */
+	@SuppressWarnings("unchecked")
 	public boolean initNewModel(LDACmdOption option){
 		if (!init(option))
 			return false;
@@ -557,6 +558,7 @@ public class Model {
 	 * Init parameters for inference
 	 * @param newData DataSet for which we do inference
 	 */
+	@SuppressWarnings("unchecked")
 	public boolean initNewModel(LDACmdOption option, LDADataset newData, Model trnModel){
 		if (!init(option))
 			return false;

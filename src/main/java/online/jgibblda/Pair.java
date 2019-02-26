@@ -28,24 +28,24 @@
 
 package online.jgibblda;
 
-import java.util.Comparator;
-
 public class Pair implements Comparable<Pair> {
 	public Object first;
+	@SuppressWarnings("rawtypes")
 	public Comparable second;
 	public static boolean naturalOrder = false;
 	
-	public Pair(Object k, Comparable v){
+	public Pair(Object k, @SuppressWarnings("rawtypes") Comparable v){
 		first = k;
 		second = v;		
 	}
 	
-	public Pair(Object k, Comparable v, boolean naturalOrder){
+	public Pair(Object k, @SuppressWarnings("rawtypes") Comparable v, boolean naturalOrder){
 		first = k;
 		second = v;
 		Pair.naturalOrder = naturalOrder; 
 	}
 	
+	@SuppressWarnings("unchecked")
 	public int compareTo(Pair p){
 		if (naturalOrder)
 			return this.second.compareTo(p.second);

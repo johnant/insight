@@ -37,7 +37,7 @@ public class ScoringManager {
 	
 	public ScoringManager(){
 		/*Opens the .properties file and save the variables*/
-		Properties prop = readProperties("C:\\Users\\John\\Documents\\Eclipse\\insight\\elasticsearch.properties");
+		Properties prop = readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\elasticsearch.properties");
 		this.indexName = prop.getProperty("index");
 		this.documentTopicsTypeName = prop.getProperty("documentTopicsType");
 		this.paragraphTopicsTypeName = prop.getProperty("paragraphTopicsType");

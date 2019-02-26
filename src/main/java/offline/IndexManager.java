@@ -46,7 +46,7 @@ public class IndexManager {
 	
 	public IndexManager(){
 		/*Open the .properties file and save the parameters to class attributes*/
-		Properties prop = readProperties("C:\\Users\\John\\Documents\\Eclipse\\insight\\elasticsearch.properties");
+		Properties prop = readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\elasticsearch.properties");
 		this.indexName = prop.getProperty("index");
 		this.datasetTypeName = prop.getProperty("datasetType");
 		this.documentsTypeName = prop.getProperty("documentsType");
@@ -134,7 +134,7 @@ public class IndexManager {
 								.field("type", "custom")
 								.field("tokenizer", "standard")
 								.field("char_filter","quotes")
-								.field("filter", new String[]{"standard", "asciifolding", "lowercase", "my_stop", "snowball"})
+								.field("filter", new String[]{"standard", "asciifolding", "lowercase","my_stop","snowball"})
 							.endObject()
 						.endObject()
 					.endObject()

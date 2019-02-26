@@ -48,7 +48,7 @@ public class ElasticManager {
 	
 	public ElasticManager(){
 		/*Opens the .properties file and save the variables*/
-		Properties prop = readProperties("C:\\Users\\John\\Documents\\Eclipse\\insight\\elasticsearch.properties");
+		Properties prop = readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\elasticsearch.properties");
 		this.indexName = prop.getProperty("index");
 		this.datasetTypeName = prop.getProperty("datasetType");
 		this.documentsTypeName = prop.getProperty("documentsType");
