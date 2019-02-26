@@ -1,8 +1,8 @@
-Copyright 2015
+Copyright 2015-2019
 
 Ioannis Antoniadis
 
-<antoniii@auth.gr>
+<giannis.antoniadis@issel.ee.auth.gr>
 
 Aristotle University of Thessaloniki, Greece
 
@@ -43,5 +43,7 @@ Steps:
 * The online module must be run on Tomcat 7.0 (right click on project then Run As -> Run on Server
 
 Notes:
+* There are references to local property files inside the code in the below classes: offline.WebParser, offline.IndexManager, online.ContentAnalyzer, online.DocumentAnalysisHandler, online.ElasticManager, online.ParagraphAnalysisHandler, online.ScoringManager and online.TopicAnalyzer. These references should be modified in order to point to the correct directories of the local machine where the code is executed.
 * The offline module should be run first to create the Elasticsearch index mappings and to populate the index with content (documents) based on the queries present in queries.txt file.
+* Keep in mind that the offline module execution requires an active subscription to Microsoft Azure services since it uses the Bing News Search Engine to collect a list of URLs according to the contents of the queries.txt file. There is currently an active subscription key  inside WebParser class which should work out-of-the-box.
 * After the offline module's execution is completed, the online module should be initiated as explained above. The application UI should be available on: http://localhost:8080/insight
