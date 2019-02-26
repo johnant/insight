@@ -42,5 +42,6 @@ Steps:
 * The offline module can be run as an independent java app
 * The online module must be run on Tomcat 7.0 (right click on project then Run As -> Run on Server
 
-The application UI is available on:
-http://localhost:8080/insight
+Notes:
+* The offline module should be run first to create the Elasticsearch index mappings and to populate the index with content (documents) based on the queries present in queries.txt file.
+* After the offline module's execution is completed, the online module should be initiated as explained above. The application UI should be available on: http://localhost:8080/insight
