@@ -23,7 +23,7 @@ The online module is a web application that is responsible for handling user req
 The web application consists of a front-end mechanism written in **HTML** and **Javascript** using the **AngularJS** framework. The front-end mechanism communicates **RESTfully** with a back-end mechanism that is written in **Java** and contains the core logic of the system. **Apache Tomcat 7.0** server is used for the application deloyment. **Elasticsearch 1.5.0** is used for documents storage and various statistical metrics calculations.
 
 ## Configuration
-There is a number of **.properties** files containing parameters related to the Elasticsearch server configuration and topic analysis configuration. There is also a **queries.txt** file which is used by the offline module for the initial population of the Elasticsearch index(es) with web documents, from which answers are extracted by components of the online module.
+Inside src/main/resources directory, there are a number of **.properties** files containing parameters related to the Elasticsearch server configuration and topic analysis configuration. There is also a **queries.txt** file which is used by the offline module for the initial population of the Elasticsearch index(es) with web documents, from which answers are extracted by components of the online module.
 
 ## Run the application
 Required Software: 
@@ -35,15 +35,14 @@ Required Software:
 
 Steps:
 * Clone the repo insight-master and import the project in Eclipse.
-* Change the references to local property files inside the code in the below classes: **offline.WebParser, offline.IndexManager, online.ContentAnalyzer, online.DocumentAnalysisHandler, online.ElasticManager, online.ParagraphAnalysisHandler, online.ScoringManager and online.TopicAnalyzer** to contain the directories of the local machine where the code is executed.
 * Move **stopwords.txt** file to **elasticsearch-1.5.0/config** directory.
-* Change the contents of the **queries.txt** file to include recent, hot topics for news search.
+* Change the contents of the **queries.txt** file to include recent, hot topics for news search (optional).
 * Create **JAVA_HOME** environment variable to point at the jdk1.8.0 installation directory and make sure that jdk1.8.0 is reflected on the Eclipse/Maven configuration. Consult the following page:
 https://stackoverflow.com/questions/19655184/no-compiler-is-provided-in-this-environment-perhaps-you-are-running-on-a-jre-ra
 * Update and build the project using Maven inside Eclipse (right click on project, first **Maven -> Update Project...**, then **Run As -> Maven install**).
 * Create a runtime instance of Tomcat 7.0 in Eclipse.
 * Start Elasticsearch 1.5.0.
-* Run the offline module as an independent java app by running the **offline.Controller** class
+* Run the offline module as an independent java app by running the **offline.Controller** class.
 * Deploy the online module on Tomcat 7.0 (right click on project then **Run As** -> **Run on Server**). The front-end page should automatically appear in the Eclipse browser environment.
 
 Notes:
