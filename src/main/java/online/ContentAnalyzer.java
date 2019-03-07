@@ -32,14 +32,15 @@ public class ContentAnalyzer {
 		int idCounter = 0;
 		List<Document> documentList = indexManager.searchDataset(query, N);
 		
-		System.out.println("Writing "+documentList.size()+" analyzed documents");
 		for(Document doc: documentList){
 			doc.setId(idCounter++);
 			analyzedDocumentList.add(doc.getAnalyzedText());
 		}
 		
 		File folder = new File(ContentAnalyzer.class.getClassLoader().getResource("analyzed").getFile());
-		saveAnalyzedList(analyzedDocumentList, folder.getAbsolutePath()+"/analyzedDocuments.txt");
+		
+		System.out.println("Writing "+documentList.size()+" analyzed documents in "+folder.getAbsolutePath()+"\\analyzedDocuments.txt");
+		saveAnalyzedList(analyzedDocumentList, folder.getAbsolutePath()+"\\analyzedDocuments.txt");
 		indexManager.indexDocumentList(documentList);
 	}
 	
@@ -62,7 +63,8 @@ public class ContentAnalyzer {
 		
 		indexManager.indexParagraphList(paragraphList);
 		File folder = new File(ContentAnalyzer.class.getClassLoader().getResource("analyzed").getFile());
-		saveAnalyzedList(analyzedParagraphList, folder.getAbsolutePath()+"/analyzedParagraphs.txt");	
+		System.out.println("Writing "+documentList.size()+" analyzed paragraphs in "+folder.getAbsolutePath()+"\\analyzedParagraphs.txt");
+		saveAnalyzedList(analyzedParagraphList, folder.getAbsolutePath()+"\\analyzedParagraphs.txt");	
 	}
 
 	private void saveAnalyzedList(List<String> analyzedList, String fileName){
