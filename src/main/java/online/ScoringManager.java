@@ -1,5 +1,6 @@
 package online;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,7 +38,8 @@ public class ScoringManager {
 	
 	public ScoringManager(){
 		/*Opens the .properties file and save the variables*/
-		Properties prop = readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\elasticsearch.properties");
+		File file = new File(ScoringManager.class.getClassLoader().getResource("elasticsearch.properties").getFile());
+		Properties prop = readProperties(file.getAbsolutePath());
 		this.indexName = prop.getProperty("index");
 		this.documentTopicsTypeName = prop.getProperty("documentTopicsType");
 		this.paragraphTopicsTypeName = prop.getProperty("paragraphTopicsType");

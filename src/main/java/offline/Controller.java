@@ -1,6 +1,7 @@
 package offline;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,7 +25,8 @@ public class Controller {
 		
 		/*Read set of queries from external .txt file*/
 		Set<String> queries = new HashSet<String>();
-		queries = readQueries("queries.txt");
+		File file = new File(IndexManager.class.getClassLoader().getResource("queries.txt").getFile());
+		queries = readQueries(file.getAbsolutePath());
 		
 		/*Server configuration
 		 * Create elasticsearch index mappings*/

@@ -1,5 +1,6 @@
 package online;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -48,7 +49,8 @@ public class DocumentAnalysisHandler {
 		List<Topic> topicList = new ArrayList<Topic>();
 		List<Integer> topicIdList = new ArrayList<Integer>();
 		
-		Properties prop = elasticManager.readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\online.properties");
+		File file = new File(DocumentAnalysisHandler.class.getClassLoader().getResource("online.properties").getFile());
+		Properties prop = elasticManager.readProperties(file.getAbsolutePath());
 		int k = Integer.parseInt(prop.getProperty("kd"));
 		ScoringManager scoringManager = new ScoringManager();
 		SearchResponse sr = scoringManager.scoreDocumentTopics(query, k);	
@@ -73,7 +75,8 @@ public class DocumentAnalysisHandler {
 		System.out.println("Ranking documents by topics: "+topicIds.toString());
 		
 		ElasticManager indexManager = new ElasticManager();
-		Properties prop = indexManager.readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\online.properties");
+		File file = new File(DocumentAnalysisHandler.class.getClassLoader().getResource("online.properties").getFile());
+		Properties prop = indexManager.readProperties(file.getAbsolutePath());
 		int d = Integer.parseInt(prop.getProperty("d"));
 		
 		ScoringManager scoringManager = new ScoringManager();

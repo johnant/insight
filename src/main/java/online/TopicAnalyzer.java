@@ -1,5 +1,6 @@
 package online;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,8 +38,9 @@ public class TopicAnalyzer {
 	public List<Topic> createDocumentTopics(){
 		
 		/*Perform document-level lda*/
-		lda("C:\\Users\\giannis\\eclipse-workspace\\insight\\documentLDA.properties");	
-		
+		File file = new File(TopicAnalyzer.class.getClassLoader().getResource("documentLDA.properties").getFile());
+		lda(file.getAbsolutePath());
+
 		ElasticManager indexManager = new ElasticManager();
 		int N = indexManager.getDocumentsCount();
 		
@@ -48,7 +50,8 @@ public class TopicAnalyzer {
 	public List<Topic> createParagraphTopics(){
 		
 		/*Perform paragraph-level lda*/
-		lda("C:\\Users\\giannis\\eclipse-workspace\\insight\\paragraphLDA.properties");	
+		File file = new File(TopicAnalyzer.class.getClassLoader().getResource("paragraphLDA.properties").getFile());
+		lda(file.getAbsolutePath());
 
 		ElasticManager indexManager = new ElasticManager();
 		int P = indexManager.getParagraphsCount();
@@ -119,14 +122,16 @@ public class TopicAnalyzer {
 		ElasticManager indexManager = new ElasticManager();
 		Properties prop = indexManager.readProperties(fileName);
 		LDACmdOption ldaOption = new LDACmdOption();
-
+		
+		File folder = new File(TopicAnalyzer.class.getClassLoader().getResource("analyzed").getFile());
+		
 		ldaOption.est = true;
 		ldaOption.alpha = Double.parseDouble(prop.getProperty("alpha"));
 		ldaOption.beta = Double.parseDouble(prop.getProperty("beta"));
 		ldaOption.K = Integer.parseInt(prop.getProperty("K"));
 		ldaOption.niters = Integer.parseInt(prop.getProperty("niters"));
 		ldaOption.savestep = Integer.parseInt(prop.getProperty("savestep"));
-		ldaOption.dir = prop.getProperty("dir");
+		ldaOption.dir = folder.getAbsolutePath();
 		ldaOption.dfile = prop.getProperty("dfile");
 		ldaOption.twords = Integer.parseInt(prop.getProperty("twords"));
 			

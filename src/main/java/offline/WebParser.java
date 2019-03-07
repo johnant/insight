@@ -1,5 +1,6 @@
 package offline;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +69,8 @@ public class WebParser {
 		System.out.println("Searching the web for documents");
 		IndexManager indexManager = new IndexManager();
 		
-		Properties prop = indexManager.readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\online.properties");
+		File file = new File(WebParser.class.getClassLoader().getResource("online.properties").getFile());
+		Properties prop = indexManager.readProperties(file.getAbsolutePath());
 		int N = Integer.parseInt(prop.getProperty("N"));
 		
 		/* Documents by api search*/

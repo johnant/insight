@@ -1,5 +1,6 @@
 package online;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -47,7 +48,8 @@ public class ParagraphAnalysisHandler {
 		 * Paragraph topics scoring section*/
 		List<Integer> paragraphTopicIdList = new ArrayList<Integer>();
 		
-		Properties prop = indexManager.readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\online.properties");
+		File file = new File(ParagraphAnalysisHandler.class.getClassLoader().getResource("online.properties").getFile());
+		Properties prop = indexManager.readProperties(file.getAbsolutePath());
 		int k = Integer.parseInt(prop.getProperty("kp"));
 		ScoringManager scoringManager = new ScoringManager();
 		SearchResponse sr = scoringManager.scoreParagraphTopics(topicIds, k);
@@ -72,7 +74,8 @@ public class ParagraphAnalysisHandler {
 		System.out.println("Ranking paragraphs by topics: "+topicIds.toString());
 		
 		ElasticManager indexManager = new ElasticManager();
-		Properties prop = indexManager.readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\online.properties");
+		File file = new File(ParagraphAnalysisHandler.class.getClassLoader().getResource("online.properties").getFile());
+		Properties prop = indexManager.readProperties(file.getAbsolutePath());
 		int p = Integer.parseInt(prop.getProperty("p"));
 
 		List<Paragraph> topParagraphList = new ArrayList<Paragraph>();

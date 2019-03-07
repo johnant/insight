@@ -1,5 +1,6 @@
 package online;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -25,7 +26,8 @@ public class ContentAnalyzer {
 		
 		List<String> analyzedDocumentList = new ArrayList<String>();
 		ElasticManager indexManager = new ElasticManager();
-		Properties prop = indexManager.readProperties("C:\\Users\\giannis\\eclipse-workspace\\insight\\online.properties");
+		File file = new File(ContentAnalyzer.class.getClassLoader().getResource("online.properties").getFile());
+		Properties prop = indexManager.readProperties(file.getAbsolutePath());
 		int N = Integer.parseInt(prop.getProperty("N"));
 		int idCounter = 0;
 		List<Document> documentList = indexManager.searchDataset(query, N);
@@ -36,7 +38,8 @@ public class ContentAnalyzer {
 			analyzedDocumentList.add(doc.getAnalyzedText());
 		}
 		
-		saveAnalyzedList(analyzedDocumentList, "C:\\Users\\giannis\\eclipse-workspace\\insight\\analyzedDocuments.txt");
+		File folder = new File(ContentAnalyzer.class.getClassLoader().getResource("analyzed").getFile());
+		saveAnalyzedList(analyzedDocumentList, folder.getAbsolutePath()+"/analyzedDocuments.txt");
 		indexManager.indexDocumentList(documentList);
 	}
 	
@@ -58,7 +61,8 @@ public class ContentAnalyzer {
 		}
 		
 		indexManager.indexParagraphList(paragraphList);
-		saveAnalyzedList(analyzedParagraphList, "C:\\Users\\giannis\\eclipse-workspace\\insight\\analyzedParagraphs.txt");	
+		File folder = new File(ContentAnalyzer.class.getClassLoader().getResource("analyzed").getFile());
+		saveAnalyzedList(analyzedParagraphList, folder.getAbsolutePath()+"/analyzedParagraphs.txt");	
 	}
 
 	private void saveAnalyzedList(List<String> analyzedList, String fileName){
